@@ -14,6 +14,9 @@ from keras.applications import vgg16
 import datetime
 import traceback
 
+from django.views.generic import ListView, DetailView
+from .models import FruitDatabase
+
 def index(request):
     if  request.method == "POST":
         f=request.FILES['sentFile'] # here you get the files needed
@@ -40,3 +43,12 @@ def index(request):
         return render(request,'homepage.html',response)
     else:
         return render(request,'homepage.html')
+
+class InfoView(DetailView):
+    model = FruitDatabase
+    template_name = 'more-info.html'
+    context_object_name = 'fruitdatabase'
+    
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        return data

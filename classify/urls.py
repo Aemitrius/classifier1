@@ -16,7 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from . import views
+from .views import InfoView
 urlpatterns = [
     path('', views.index, name='homepage'),
     path('admin/', admin.site.urls),
+    path('more-info/<int:pk>', InfoView.as_view(), name='more-info')
 ]
