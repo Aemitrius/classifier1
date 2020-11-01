@@ -69,12 +69,15 @@ class InfoView(DetailView):
     template_name = 'more-info.html'
     context_object_name = 'fruitdatabase'
     
-    def get_context_data(self, **kwargs):
-        data = super().get_context_data(**kwargs)
-        return data
+    def get(self, request):
+        predictedLabel = request.GET.get('predictedLabel', None)
+        if manager:
+            profiles_set = FruitDatabase.objects.filter(fruit_name=predictedLabel)
+        else:
+            profiles_set = FruitDatabase.objects.all()
+            
 
-
-def search(request):
-    search = FruitDatabase.objects.all()
-    fruit_filter = FruitFilter(request.GET, queryset=search)
-    return render(request, 'users/fruit_filter.html', {'filter': fruit_filter})
+# def search(request):
+#     search = FruitDatabase.objects.all().filter(fruit_name = predictedLabel)
+#     fruit_filter = FruitFilter(request.GET, queryset=search)
+#     return render(request, 'users/fruit_filter.html', {'filter': fruit_filter})
