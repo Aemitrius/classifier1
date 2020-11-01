@@ -4,56 +4,256 @@
 <head>
 
      <title>Image Classifier for food</title>
-
-     <meta charset="UTF-8">
-     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
      <meta name="description" content="">
      <meta name="keywords" content="">
      <meta name="author" content="Tooplate">
      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
      <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" >
+     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
      <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" >
      <link rel="stylesheet" href="{% static 'css/animate.css' %}" >
      <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}" >
      <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}" >
 
      <!-- MAIN CSS -->
+<style>body {
+     background-color: #100e17;
+     font-family: 'Open Sans', sans-serif;
+   }
+   
+   .container {
+     position: absolute;
+     height: 300px;
+     width: 600px;
+     top: 60px;
+     left: calc(50% - 300px);
+     display: flex;
+   }
+   
+   .card {
+     display: flex;
+     height: 400px;
+     width: 400px;
+     background-color: #17141d;
+     border-radius: 10px;
+     box-shadow: -4rem 0 3rem #000;
+   /*   margin-left: -50px; */
+     transition: 0.4s ease-out;
+     position: relative;
+     left: 400px;
+   }
+   .card2 {
+     
+     display: flex;
+     height: 100px;
+     width: 1000px;
+     background-color: #17141d;
+     border-radius: 10px;
+     box-shadow: -1rem 0 3rem #000;
+   /*   margin-left: -50px; */
+     transition: 0.4s ease-out;
+     position: centre;
+     left: 400px;
+   }
+   
+   
+   .card:not(:first-child) {
+       margin-left: -50px;
+   }
+   
+   .card:hover {
+     transform: translateY(-20px);
+     transition: 0.4s ease-out;
+   }
+   
+   .card:hover ~ .card {
+     position: relative;
+     left: 50px;
+     transition: 0.4s ease-out;
+   }
+   
+   .title {
+     color: white;
+     font-weight: 300;
+     position: absolute;
+     left: 20px;
+     top: 15px;
+   }
+   
+   .bar {
+     position: absolute;
+     top: 100px;
+     left: 20px;
+     height: 5px;
+     width: 150px;
+   }
+   
+   .emptybar {
+     background-color: #2e3033;
+     width: 100%;
+     height: 100%;
+   }
+   
+   .filledbar {
+     position: absolute;
+     top: 0px;
+     z-index: 3;
+     width: 0px;
+     height: 100%;
+     background: rgb(0,154,217);
+     background: linear-gradient(90deg, rgba(0,154,217,1) 0%, rgba(217,147,0,1) 65%, rgba(255,186,0,1) 100%);
+     transition: 0.6s ease-out;
+   }
+   
+   .card:hover .filledbar {
+     width: 120px;
+     transition: 0.4s ease-out;
+   }
+   
+   .circle {
+     position: absolute;
+     top: 150px;
+     left: calc(50% - 60px);
+   }
+   
+   .stroke {
+     stroke: white;
+     stroke-dasharray: 360;
+     stroke-dashoffset: 360;
+     transition: 0.6s ease-out;
+   }
+   
+   svg {
+     fill: #17141d;
+     stroke-width: 2px;
+   }
+    div.a {
+      padding-top: 10px;
+      color:white;
+      text-align: center;
+           }
 
+    div.b {
+      text-align: left;
+    }
+
+    div.c {
+      color : white
+      text-align: right;
+    } 
+
+    div.d {
+      text-align: justify;
+    } 
+   .card:hover .stroke {
+     stroke-dashoffset: 100;
+     transition: 0.6s ease-out;
+   }
+   
+
+
+
+
+   .main {
+  position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.main-heading {
+  color: white;
+  text-transform: uppercase;
+}
+
+.main-heading-primary {
+  display: block;
+  font-size: 2.0rem;
+  font-weight: 4;
+  letter-spacing: 14px;
+  animation: moveInLeft 1s ease-out;
+}
+
+.main-heading-secondary {
+  font-family: sans-serif;
+  display: block;
+  font-size: 2.0rem;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 14px;
+  color: hotpink;
+  animation: moveInRight 1s ease-out;
+}
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  
+  80% {
+    transform: translateX(10px);
+  }
+  
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  
+  80% {
+    transform: translateX(-10px);
+  }
+  
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+   </style>
 </head>
 <body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
 
-     <div class="wrapper">
-          <div class="container">
-     <!-- MENU -->
-     <header>
-
-               <div class="navbar-header">
-                    <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                         <span class="icon icon-bar"></span>
-                         <span class="icon icon-bar"></span>
-                         <span class="icon icon-bar"></span>
-                    </button>
-
-                    <!-- lOGO TEXT HERE -->
-                    <a href="index.html" class="navbar-brand"><i class="fa fa-h-square"></i>The classifier</a>
-               </div>
-
-               <!-- MENU LINKS -->
-          
-          </div>
-     </section>
-</header>
-</div>
+     
 
 
      <!-- HOME -->
 
 
-<div class="container">
+
      {% block content%}
      {% endblock %}
     
-</div>
+
 
      <!-- SCRIPTS -->
      <script  src="{% static 'js/jquery.js' %}"></script>

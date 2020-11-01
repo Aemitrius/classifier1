@@ -1,24 +1,43 @@
 {% extends 'headerPage.html' %}
 
+    
 {% block content%}
 
-    <h2>Uplaod Image for Classification</h2>
-
-    
-    <br>
-   
+<div class ="a">
+  <div class="main">
+    <h1 class="main-heading">
+      <span class="main-heading-primary">The Image classifier</span>
+      <span class="main-heading-secondary">for food</span>
+    </h1>
+  </div>
+</div>
     <form method="post" enctype="multipart/form-data" action="predictImage">
   
  {% csrf_token %}
- <div class="col-md-4 col-sm-4"><label for="fname">Upload Image File Here:</label> </div> <input name="filePath" type="file"><br><br>
- <br>
+ <div class ="c" style = color:white>
+
+<h2>
+Upload Image File Here:</h2> <input name="filePath" type="file"></div>
 
  
- <input type="submit" value="Submit" ></div>
+<div><input type="submit" value="Submit" ></div>
+</div>
+</div>
+</div>
+ <h2></h2>
+ <div class ="a">
+  <div class="card2">
+    <div class="main-heading">
+  <h2>The classification of the image is {{predictedLabel}}</h2></div></div>
 
- <h2>The classification of the image is {{predictedLabel}}</h2>
- <img src={{filePathName}} alt='imagename'>
- {{filePathName}}
+ <div  class ="card">
+      
+      <img src={{filePathName}} alt='imagename'>
+      {{filePathName}}
+    </div>
+  </div>
+    </div>
+  </div>
 
 </form>
 <br>
