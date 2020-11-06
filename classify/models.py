@@ -1,7 +1,9 @@
 from django.db import models
 from check.models import ItemObject
+from PIL import pillow
 
 class FruitDatabase(models.Model):
+    fruit_id = models.AutoField()
     fruit_name = models.CharField(max_length=50)
     fruit_family = models.CharField(max_length=50)
     fruit_type = models.CharField(max_length=50, null=True, blank=True)
