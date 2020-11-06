@@ -20,5 +20,5 @@ from .views2 import InfoView
 urlpatterns = [
     path('', views2.index, name='homepage'),
     path('admin/', admin.site.urls),
-    path('more-info/<int:pk>', InfoView.as_view(), name='more-info')
+    path('search', views2.search, name='fruit_filter.html')
 ]
