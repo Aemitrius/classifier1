@@ -722,8 +722,11 @@ body {
       <div class="sidebar-search">
         <div>
           <div class="input-group">
-            <input type="text" class="form-control search-menu" placeholder="Search...">
-            <div class="input-group-append">
+            <form method="GET" action="/search" class="form-inline">
+            <input class="form-control mr-sm-2" type="search" name="query" id="search" placeholder="Search"
+                aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
               <span class="input-group-text">
                 <i class="fa fa-search" aria-hidden="true"></i>
               </span>
